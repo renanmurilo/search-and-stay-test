@@ -5,7 +5,7 @@
             <q-form @submit="onSubmit" class="q-gutter-md">
                 <q-input
                     filled
-                    v-model="name"
+                    v-model="user.name"
                     label="Your name *"
                     hint="Name and surname"
                     lazy-rules
@@ -13,6 +13,12 @@
                         (val) =>
                             (val && val.length > 0) || 'Please type something',
                     ]"
+                />
+
+                <q-toggle
+                    v-model="user.active"
+                    :false-value="0"
+                    :true-value="1"
                 />
 
                 <div>
@@ -30,22 +36,25 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { reactive } from 'vue';
 import { useCreatePaciente } from 'stores/createUser';
 
 export default {
     setup() {
-        const name = ref(null);
         const create = useCreatePaciente();
+        const user = reactive({
+            name: null,
+            active: 0,
+        });
 
         return {
-            name,
+            user,
             register: create.register,
         };
     },
     methods: {
         onSubmit() {
-            this.register(this.name);
+            this.register(this.user);
         },
     },
 };
