@@ -11,6 +11,7 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
       { path: '/create', component: () => import('pages/CreateUser.vue') },
+      { path: '/update/:id', component: () => import('pages/UpdateUser.vue') },
     ]
   },
 

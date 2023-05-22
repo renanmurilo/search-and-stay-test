@@ -1,24 +1,17 @@
 import { defineStore } from 'pinia'
 import { api } from 'boot/axios'
 
-export const useStore = defineStore('store', {
+export const userStore = defineStore('store', {
+  id: 'users',
   state: () => ({
-    list: null,
+    users: {}
   }),
-  // getters: {
-  //   getList() {
-  //     return this.list = [state.list].map((list) => list.entities)
-  //   }
-  // },
   actions: {
-    async fetchData() {
-      try {
-        const response = await api.get('house_rules')
-        console.log(response.data, 'dentro');
-        this.list = [response.data].map((list) => list.entities)
-      } catch (error) {
-        console.error(error)
-      }
+    async fetchUsers() {
+      await api.get('house_rules')
+        .then(users => this.users = users.data.data)
+        .catch(error => this.users = { error })
+        console.log(this.users);
     },
   },
 })
