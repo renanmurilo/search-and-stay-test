@@ -4,7 +4,7 @@ const routes = [
     path: '/login',
     name: 'LoginPage',
     component: () => import('layouts/Login.vue'),
-     meta: { requiresAuth: false },
+     meta: { requiresAuth: false }
   },
 
   {
@@ -22,7 +22,7 @@ const routes = [
   {
     path: '/:catchAll(.*)*',
     component: () => import('pages/ErrorNotFound.vue'),
-     meta: { requiresAuth: false },
+     meta: { requiresAuth: true },
   }
 ]
 
