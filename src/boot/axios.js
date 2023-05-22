@@ -15,17 +15,16 @@ const api = axios.create({
     }
 })
 
-// api.interceptors.request.use(
-//     function (config) {
-//         const desestructure = JSON.parse(localStorage.user)
-//         const token = desestructure?.data?.idToken
-//         if(token) {
-//             config.headers.Authorization = `Bearer ${token}`
-//         }
+api.interceptors.request.use(
+    function (config) {
+        const token = sessionStorage.token
+        if(token) {
+            config.headers.Authorization = `${token}`
+        }
 
-//         return config
-//     }
-// )
+        return config
+    }
+)
 
 export default boot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api

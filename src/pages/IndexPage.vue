@@ -73,6 +73,7 @@
                     </a>
                 </q-card>
             </div>
+
             <div
                 class="row justify-center items-center content-center col-md-12"
             >

@@ -58,8 +58,8 @@ export default {
     setup() {
         const $router = useRouter();
 
-        const email = ref(null);
-        const password = ref(null);
+        const email = ref('teste@teste.com');
+        const password = ref('123456');
 
         return {
             email,
